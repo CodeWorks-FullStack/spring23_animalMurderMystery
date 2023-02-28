@@ -194,7 +194,9 @@ function getClue() {
     let murderer = animals.find(a => a.guilty == true)
     // console.log(murderer);
     let clues = ['age', 'diet', 'weapon', 'mammal']
+    // NOTE gets random number
     let randomIndex = Math.floor(Math.random() * clues.length)
+    // NOTE gets random clue using our randomly generated number
     let randomClue = clues[randomIndex]
     // console.log(randomClue, 'random clue');
     let clueElem = document.getElementById('clues')
@@ -214,7 +216,7 @@ function getClue() {
             break
         case 'mammal':
             // clueElem.innerText = murderer.mammal
-            // NOTE this is a ternary; after the question is true, after the colon is false
+            // NOTE this is a ternary (fancy if statement); after the question is true, after the colon is false
             clueElem.innerHTML = `<p>The murderer is ${murderer.mammal ? 'a mammal' : 'not a mammal'}</p>`
             break
     }
