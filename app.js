@@ -190,9 +190,36 @@ function makeAMurderer() {
     muderer.guilty = true
 }
 
-// function getClue() {
-// TODO come back to this.... this is the last part dun dun dun 
-// }
+function getClue() {
+    let murderer = animals.find(a => a.guilty == true)
+    // console.log(murderer);
+    let clues = ['age', 'diet', 'weapon', 'mammal']
+    let randomIndex = Math.floor(Math.random() * clues.length)
+    let randomClue = clues[randomIndex]
+    // console.log(randomClue, 'random clue');
+    let clueElem = document.getElementById('clues')
+    clueElem.innerText = randomClue
+    switch (randomClue) {
+        case 'age':
+            // NOTE innerHTML for rendering HTML elements, innerText for text inside of HTML elements
+            clueElem.innerHTML = `<p>The murderer is ${murderer.age} years old</p>`
+            break
+        case 'diet':
+            // clueElem.innerText = murderer.diet
+            clueElem.innerHTML = `<p>The murderer eats ${murderer.diet.join(' and ')}</p>`
+            break
+        case 'weapon':
+            // clueElem.innerText = murderer.weapon
+            clueElem.innerHTML = `<p>The murderer used ${murderer.weapon}</p>`
+            break
+        case 'mammal':
+            // clueElem.innerText = murderer.mammal
+            // NOTE this is a ternary; after the question is true, after the colon is false
+            clueElem.innerHTML = `<p>The murderer is ${murderer.mammal ? 'a mammal' : 'not a mammal'}</p>`
+            break
+    }
+
+}
 
 
 function accuse() {
@@ -214,4 +241,5 @@ function accuse() {
 
 makeAMurderer()
 drawAllAnimals()
+getClue()
 
